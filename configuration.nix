@@ -134,6 +134,35 @@ in
       };
     };
     programs.bash.enable = true;
+    programs.kitty = {
+      enable = true;
+      settings = {
+        background_opacity = "0.85";
+        background = "#000000";
+        foreground = "#fcfcfa";
+        cursor = "#fcfcfa";
+        cursor_text_color = "#000000";
+        selection_foreground = "#403e41";
+        selection_background = "#fcfcfa";
+        color0 = "#403e41";
+        color8 = "#727072";
+        color1 = "#ff6188";
+        color9 = "#ff6188";
+        color2 = "#a9dc76";
+        color10 = "#a9dc76";
+        color3 = "#ffd866";
+        color11 = "#ffd866";
+        color4 = "#fc9867";
+        color12 = "#fc9867";
+        color5 = "#ab9df2";
+        color13 = "#ab9df2";
+        color6 = "#78dce8";
+        color14 = "#78dce8";
+        color7 = "#fcfcfa";
+        color15 = "#fcfcfa";
+        wayland_titlebar_color = "background";
+      };
+    };
   
     # The state version is required and should stay at the version you
     # originally installed.
