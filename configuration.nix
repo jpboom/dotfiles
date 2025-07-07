@@ -112,6 +112,7 @@ in
   home-manager.users.jpboom = { pkgs, ... }: {
     dconf = {
       enable = true;
+      settings."org/gnome/desktop/interface".accent-color = "teal";
       settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
       settings."org/gnome/desktop/interface".cursor-theme = "Posy_Cursor_Black";
       settings."org/gnome/desktop/interface".document-font-name = "IBM Plex Sans 12";
@@ -121,6 +122,7 @@ in
       settings."org/gnome/shell" = {
         enabled-extensions = with pkgs.gnomeExtensions; [
           blur-my-shell.extensionUuid
+          caffeine.extensionUuid
         ];
       };
     };
@@ -188,11 +190,12 @@ in
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
-    gnomeExtensions.blur-my-shell
     pkgs.atuin
     pkgs.deluge
     pkgs.discord
     pkgs.enpass
+    pkgs.gnomeExtensions.blur-my-shell
+    pkgs.gnomeExtensions.caffeine
     pkgs.ibm-plex
     pkgs.joplin-desktop
     pkgs.kitty
@@ -201,6 +204,7 @@ in
     pkgs.plex
     pkgs.posy-cursors
     pkgs.wgnord
+    pkgs.dconf-editor
   ];
 
   fonts.fontDir.enable = true;
