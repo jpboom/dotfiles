@@ -15,9 +15,8 @@ in
     ];
 
   # Bootloader.
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/vda";
-  boot.loader.grub.useOSProber = true;
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -98,6 +97,13 @@ in
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
+  services.plex = {
+    enable = true;
+    openFirewall = true;
+    user="jpboom";
+  };
+
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.jpboom = {
     isNormalUser = true;
@@ -125,6 +131,7 @@ in
           caffeine.extensionUuid
         ];
       };
+      settings."org/gnome/mutter".experimental-features = ["variable-refresh-rate"];
     };
     programs.atuin = {
       enable = true;
@@ -173,7 +180,7 @@ in
 
   # Install firefox.
   programs.firefox.enable = true;
-
+  
   # Install Steam.
   programs.steam = {
     enable = true;
@@ -201,12 +208,13 @@ in
     pkgs.kitty
     pkgs.libreoffice
     pkgs.mpv
-    pkgs.plex
     pkgs.posy-cursors
+    pkgs.spotify-player
     pkgs.wgnord
+    # Temporary/Config pkgs
     pkgs.dconf-editor
   ];
-
+  
   fonts.fontDir.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -226,7 +234,7 @@ in
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+  networking.firewall.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
